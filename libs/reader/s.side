@@ -1,0 +1,50 @@
+{
+  "id": "d4aa1f14-bd71-4b6c-b40f-04f41a243c15",
+  "version": "2.0",
+  "name": "s",
+  "url": "https://stackoverflow.com",
+  "tests": [{
+    "id": "6ef30d62-3df2-4e5b-8626-6983819861ef",
+    "name": "b",
+    "commands": [{
+      "id": "c41919fb-d0b7-4acf-b1f6-820b5a47e46b",
+      "comment": "",
+      "command": "open",
+      "target": "/questions/16220696/how-to-get-url-from-link-element-in-selenium-ide",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "eb90ba35-8be5-4aa5-97e0-46c3b9dc68b6",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "550x697",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "d927268b-e18f-434a-8148-ce09163af215",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=storeAttribute",
+      "targets": [
+        ["linkText=storeAttribute", "linkText"],
+        ["css=.s-prose a", "css:finder"],
+        ["xpath=//a[contains(text(),'storeAttribute')]", "xpath:link"],
+        ["xpath=//div[@id='answer-16220756']/div/div[2]/div/p/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, 'https://web.archive.org/web/20110525081059/http://www.hexbytes.com/?paged=2#post-56')]", "xpath:href"],
+        ["xpath=//div/p/a", "xpath:position"],
+        ["xpath=//a[contains(.,'storeAttribute')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }]
+  }],
+  "suites": [{
+    "id": "84c8fa11-1326-463a-a841-e46916b94193",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["6ef30d62-3df2-4e5b-8626-6983819861ef"]
+  }],
+  "urls": ["https://stackoverflow.com/"],
+  "plugins": []
+}

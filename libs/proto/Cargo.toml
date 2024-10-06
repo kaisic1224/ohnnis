@@ -1,0 +1,17 @@
+[package]
+name = "proto"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+bytes = "1.7.2"
+crossbeam-channel = "0.5.13"
+env_logger = "0.11.5"
+features = "0.10.0"
+log = "0.4.22"
+parking_lot = "0.12.3"
+refinery = "0.8.14"
+tokio = { version = "1.40.0", features = ["full"] }
+tokio-postgres = "0.7.12"

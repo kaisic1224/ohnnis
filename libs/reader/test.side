@@ -1,0 +1,59 @@
+{
+  "id": "2bdde97b-bc10-4e63-9d5c-913a90a07b6e",
+  "version": "2.0",
+  "name": "test",
+  "url": "https://owasp.org",
+  "tests": [{
+    "id": "f966f967-0450-4bb8-a482-ca5223de4e4f",
+    "name": "get-items",
+    "commands": [{
+      "id": "f8d35f43-6d1a-44c5-8cdd-7589a5d38bf2",
+      "comment": "",
+      "command": "open",
+      "target": "/www-project-top-ten/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "8914d482-6b58-4864-8bd8-04f69990508d",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "550x693",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "319ced2a-72cc-45a4-857e-bf7b884e1ede",
+      "comment": "",
+      "command": "click",
+      "target": "css=li:nth-child(1) > a > strong",
+      "targets": [
+        ["css=li:nth-child(1) > a > strong", "css:finder"],
+        ["xpath=//section[@id='sec-main']/ul[2]/li/a/strong", "xpath:idRelative"],
+        ["xpath=//a/strong", "xpath:position"],
+        ["xpath=//strong[contains(.,'A01:2021-Broken Access Control')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "4e4bbbae-09d1-44ef-b8f3-1e83cb8e1167",
+      "comment": "",
+      "command": "click",
+      "target": "css=li:nth-child(10) strong",
+      "targets": [
+        ["css=li:nth-child(10) strong", "css:finder"],
+        ["xpath=//section[@id='sec-main']/ul[2]/li[10]/a/strong", "xpath:idRelative"],
+        ["xpath=//li[10]/a/strong", "xpath:position"],
+        ["xpath=//strong[contains(.,'A10:2021-Server-Side Request Forgery')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }]
+  }],
+  "suites": [{
+    "id": "74c743c1-54bb-4f23-ae64-2fa31c06b078",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["f966f967-0450-4bb8-a482-ca5223de4e4f"]
+  }],
+  "urls": ["https://owasp.org/"],
+  "plugins": []
+}

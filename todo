@@ -1,0 +1,88 @@
+IDEA:
+trading platform visualizer
+i want to use it to understand:
+- which stocks are good to buy
+- which stocks are good for my budget
+- forecasting (potentially)
+- i want to identify how to make money from stocks account
+- very hard to start off with buying stock options
+- want to understand how to buy assets
+
+
+__________________________________________________________
+ALTERNATE IDEA
+- owasp fetcher
+- run playwright tests
+- scan for outdated packages
+- check hosts
+- ref networkcuck hacking vid
+- run automated tests as a way to check security
+
+
+- SOME FEATURES (taken from caido)
+Unlimited projects
+Unlimited workflows
+Unlimited plugins
+Unlimited filter presets
+Unlimited installations
+HTTPQL filtering
+AI Assistant
+Nightly builds
+Up to 2 projects
+Up to 5 workflows
+Up to 3 plugins
+Up to 5 filter presets
+UI customization
+Core HTTP tools
+    - http/ws history
+    - request interception
+    - request replaying
+    - request automation
+    - match and replace
+
+CREATE TESTS USING SELENIUMIDE, PLAYWRIGHT OR CYPRESS
+- ABILITY TO SWITCH BETWEEN TESTING FRAMEWORKS
+- USE A MITM TO CHECK IF REQUESTS ARE BEING PROPERLY SECURED
+- parser to parse through the test
+OTHERS
+- run simulated mitm on all forms to track shape of request 
+- run directory enumeration to find "admin", "dashboard" pages (parameter tampering)
+- allow multiple users to connect to a "session"
+    - within this session 
+
+
+want to use:
+- auto-scaling
+- rust (tokio) for server
+    - tcp/ip
+        - server ports for connections
+    - use server for checking stock prices?
+    - graphql
+    - PSQL, SQLite for docker storage volume or Redis
+- AWS
+    - S3, Route53, Cloudfront
+- Docker/Kubernetes (Docker compose?)
+    - Multi-nodal
+- React/Next
+- DGraph/neo4j
+
+
+GOALS:
+- I want to build a multi-nodal server
+- I want to better understand headers and header options (including CORS, and accept requests)
+    - I want to create a server that can accept different media types through accept parameters
+- I want to build a server that can auto scale
+- actually manage deployments and versioning
+    - zero downtime deployments
+
+
+
+
+DISTRIBUTED REVERSE PROXY
+DISTRIBUTED WRITER NODES
+DISTRIBUTED READER ONDES
+- Clients will upload an image to a server
+- That server will load balance across a bunch of handler servers
+- these handler servers will write the images to a file, and be multi-threaded
+  
+All these game servers update a sqlite db that stores a bunch of hashes of items and forms an image from it
