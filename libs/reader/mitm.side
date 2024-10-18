@@ -1,0 +1,263 @@
+{
+  "id": "f1259343-16f3-430a-b17f-3fd069c7b97a",
+  "version": "2.0",
+  "name": "mitm",
+  "url": "https://www.thesaurus.com/browse/test",
+  "tests": [{
+    "id": "4269100e-c167-437e-bc5c-9828d13b5e25",
+    "name": "forms",
+    "commands": [{
+      "id": "2808a5eb-0088-49a3-bc26-fcef0037e477",
+      "comment": "",
+      "command": "open",
+      "target": "/stable/concepts-howmitmproxyworks/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "581823d6-6df1-4408-947a-b172a300b2ca",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "550x699",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "ae0463fc-5312-4e5f-92d2-964bcc2d67d9",
+      "comment": "",
+      "command": "click",
+      "target": "css=p:nth-child(15) > a:nth-child(2)",
+      "targets": [
+        ["css=p:nth-child(15) > a:nth-child(2)", "css:finder"],
+        ["xpath=//a[contains(text(),'register mitmproxy as a trusted CA with the device\nmanually')]", "xpath:link"],
+        ["xpath=//div[@id='main']/p[6]/a[2]", "xpath:idRelative"],
+        ["xpath=(//a[contains(@href, '../concepts-certificates/')])[2]", "xpath:href"],
+        ["xpath=//a[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "a4cb544e-5f72-4c3e-a1e3-07876f15fc07",
+      "comment": "",
+      "command": "click",
+      "target": "css=p:nth-child(24)",
+      "targets": [
+        ["css=p:nth-child(24)", "css:finder"],
+        ["xpath=//div[@id='main']/p[11]", "xpath:idRelative"],
+        ["xpath=//p[11]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "536927e1-03f4-43ac-ab29-09988ec97d90",
+      "comment": "",
+      "command": "click",
+      "target": "css=p:nth-child(24) > a",
+      "targets": [
+        ["css=p:nth-child(24) > a", "css:finder"],
+        ["xpath=(//a[contains(text(),'Server\nName Indication')])[2]", "xpath:link"],
+        ["xpath=//div[@id='main']/p[11]/a", "xpath:idRelative"],
+        ["xpath=(//a[contains(@href, 'https://en.wikipedia.org/wiki/Server_Name_Indication')])[2]", "xpath:href"],
+        ["xpath=//p[11]/a", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "ea3e28c0-350a-4f81-a67c-20da321e446b",
+      "comment": "",
+      "command": "doubleClick",
+      "target": "css=p:nth-child(24) > a",
+      "targets": [
+        ["css=p:nth-child(24) > a", "css:finder"],
+        ["xpath=(//a[contains(text(),'Server\nName Indication')])[2]", "xpath:link"],
+        ["xpath=//div[@id='main']/p[11]/a", "xpath:idRelative"],
+        ["xpath=(//a[contains(@href, 'https://en.wikipedia.org/wiki/Server_Name_Indication')])[2]", "xpath:href"],
+        ["xpath=//p[11]/a", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "3bb678a3-89ac-44b4-bccd-9ee05e462c8b",
+      "comment": "",
+      "command": "mouseOver",
+      "target": "css=.mw-logo-icon",
+      "targets": [
+        ["css=.mw-logo-icon", "css:finder"],
+        ["xpath=//img", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "b7125263-d191-43b0-9210-f706cd7cfd1e",
+      "comment": "",
+      "command": "mouseOut",
+      "target": "css=.mw-logo-icon",
+      "targets": [
+        ["css=.mw-logo-icon", "css:finder"],
+        ["xpath=//img", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "20e8bca0-f01b-4257-8fe8-deff419b0df3",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=iptables",
+      "targets": [
+        ["linkText=iptables", "linkText"],
+        ["css=p:nth-child(32) > a:nth-child(1)", "css:finder"],
+        ["xpath=//a[contains(text(),'iptables')]", "xpath:link"],
+        ["xpath=//div[@id='main']/p[15]/a", "xpath:idRelative"],
+        ["xpath=//a[@href='http://www.netfilter.org/']", "xpath:href"],
+        ["xpath=//p[15]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'iptables')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "0dbb9185-077f-45d6-b79f-d5a169062d7f",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=↩︎",
+      "targets": [
+        ["linkText=↩︎", "linkText"],
+        ["css=.footnote-backref", "css:finder"],
+        ["xpath=//a[contains(text(),'↩︎')]", "xpath:link"],
+        ["xpath=//li[@id='fn:1']/p/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '#fnref:1')]", "xpath:href"],
+        ["xpath=//li/p/a", "xpath:position"],
+        ["xpath=//a[contains(.,'↩︎')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "1af24808-6cd5-444e-a90d-7d9642d606fc",
+      "comment": "",
+      "command": "close",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "dd6da02c-b9b8-45b3-bc04-4339790f0460",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=HTTP RFC",
+      "targets": [
+        ["linkText=HTTP RFC", "linkText"],
+        ["css=p:nth-child(5) > a", "css:finder"],
+        ["xpath=//a[contains(text(),'HTTP RFC')]", "xpath:link"],
+        ["xpath=//div[@id='main']/p[2]/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, 'https://tools.ietf.org/html/rfc7230')]", "xpath:href"],
+        ["xpath=//p[2]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'HTTP RFC')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }]
+  }, {
+    "id": "a56ea87a-19d4-4e9f-833e-28de04da95ee",
+    "name": "form",
+    "commands": [{
+      "id": "48753d94-e19c-4607-a53c-c0e19451e4f9",
+      "comment": "",
+      "command": "open",
+      "target": "https://www.thesaurus.com/browse/test",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "490af7a9-96db-4bca-a4f4-53e8c4bbc0f4",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "550x699",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "e523a805-62bb-4b35-89ed-e06e53c4ea33",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=comp",
+      "targets": [
+        ["linkText=comp", "linkText"],
+        ["css=.tU3uvmy24AcyNXg1gHwf:nth-child(1) span:nth-child(2) > .CPTwwN0qNO__USQgCKp8", "css:finder"],
+        ["xpath=//a[contains(text(),'comp')]", "xpath:link"],
+        ["xpath=//div[@id='root']/div/main/div[2]/div[2]/div[2]/section/div/div[2]/div[2]/div[2]/p[2]/span[2]/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, 'https://www.thesaurus.com/browse/comp')]", "xpath:href"],
+        ["xpath=//div[2]/p[2]/span[2]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'comp')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "d6ca66dd-b238-42fb-9d95-4592c1be5038",
+      "comment": "",
+      "command": "click",
+      "target": "id=global-search",
+      "targets": [
+        ["id=global-search", "id"],
+        ["css=#global-search", "css:finder"],
+        ["xpath=//input[@id='global-search']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/header/div/form/div/div/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "d4bff117-eb0e-41a9-8b21-2fd31204df3b",
+      "comment": "",
+      "command": "click",
+      "target": "css=.FhY6L04xufedwDwBJCAT",
+      "targets": [
+        ["css=.FhY6L04xufedwDwBJCAT", "css:finder"],
+        ["xpath=//div[@id='root']/div/header/div/form/div/div", "xpath:idRelative"],
+        ["xpath=//form/div/div", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "438934db-daf2-4f7b-be57-6c7793779f38",
+      "comment": "",
+      "command": "click",
+      "target": "id=global-search",
+      "targets": [
+        ["id=global-search", "id"],
+        ["css=#global-search", "css:finder"],
+        ["xpath=//input[@id='global-search']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/header/div/form/div/div/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "d95cba43-023d-407e-99f9-2a12317c81a2",
+      "comment": "",
+      "command": "mouseOver",
+      "target": "id=dictionary-tab",
+      "targets": [
+        ["id=dictionary-tab", "id"],
+        ["css=#dictionary-tab", "css:finder"],
+        ["xpath=//a[@id='dictionary-tab']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/header/nav/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, 'https://www.dictionary.com')]", "xpath:href"],
+        ["xpath=//a", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "3130345a-9247-43e0-a2a5-9e72796c8e0a",
+      "comment": "",
+      "command": "type",
+      "target": "id=global-search",
+      "targets": [
+        ["id=global-search", "id"],
+        ["css=#global-search", "css:finder"],
+        ["xpath=//input[@id='global-search']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/header/div/form/div/div/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "cutter"
+    }, {
+      "id": "59d2c8a6-6354-4932-bf60-7b298209874d",
+      "comment": "",
+      "command": "click",
+      "target": "css=.tgBDzuw5Z1PYvxNwrL0J",
+      "targets": [
+        ["css=.tgBDzuw5Z1PYvxNwrL0J", "css:finder"]
+      ],
+      "value": ""
+    }]
+  }],
+  "suites": [{
+    "id": "5b7cfe5d-3ffe-4bc5-baf6-e74d318bc948",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["4269100e-c167-437e-bc5c-9828d13b5e25"]
+  }],
+  "urls": ["https://docs.mitmproxy.org/"],
+  "plugins": []
+}

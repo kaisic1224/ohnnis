@@ -1,0 +1,150 @@
+{
+  "id": "f1259343-16f3-430a-b17f-3fd069c7b97a",
+  "version": "2.0",
+  "name": "mitm",
+  "url": "https://docs.mitmproxy.org",
+  "tests": [{
+    "id": "4269100e-c167-437e-bc5c-9828d13b5e25",
+    "name": "Untitled",
+    "commands": [{
+      "id": "2808a5eb-0088-49a3-bc26-fcef0037e477",
+      "comment": "",
+      "command": "open",
+      "target": "/stable/concepts-howmitmproxyworks/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "581823d6-6df1-4408-947a-b172a300b2ca",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "550x699",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "ae0463fc-5312-4e5f-92d2-964bcc2d67d9",
+      "comment": "",
+      "command": "click",
+      "target": "css=p:nth-child(15) > a:nth-child(2)",
+      "targets": [
+        ["css=p:nth-child(15) > a:nth-child(2)", "css:finder"],
+        ["xpath=//a[contains(text(),'register mitmproxy as a trusted CA with the device\nmanually')]", "xpath:link"],
+        ["xpath=//div[@id='main']/p[6]/a[2]", "xpath:idRelative"],
+        ["xpath=(//a[contains(@href, '../concepts-certificates/')])[2]", "xpath:href"],
+        ["xpath=//a[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "a4cb544e-5f72-4c3e-a1e3-07876f15fc07",
+      "comment": "",
+      "command": "click",
+      "target": "css=p:nth-child(24)",
+      "targets": [
+        ["css=p:nth-child(24)", "css:finder"],
+        ["xpath=//div[@id='main']/p[11]", "xpath:idRelative"],
+        ["xpath=//p[11]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "536927e1-03f4-43ac-ab29-09988ec97d90",
+      "comment": "",
+      "command": "click",
+      "target": "css=p:nth-child(24) > a",
+      "targets": [
+        ["css=p:nth-child(24) > a", "css:finder"],
+        ["xpath=(//a[contains(text(),'Server\nName Indication')])[2]", "xpath:link"],
+        ["xpath=//div[@id='main']/p[11]/a", "xpath:idRelative"],
+        ["xpath=(//a[contains(@href, 'https://en.wikipedia.org/wiki/Server_Name_Indication')])[2]", "xpath:href"],
+        ["xpath=//p[11]/a", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "ea3e28c0-350a-4f81-a67c-20da321e446b",
+      "comment": "",
+      "command": "doubleClick",
+      "target": "css=p:nth-child(24) > a",
+      "targets": [
+        ["css=p:nth-child(24) > a", "css:finder"],
+        ["xpath=(//a[contains(text(),'Server\nName Indication')])[2]", "xpath:link"],
+        ["xpath=//div[@id='main']/p[11]/a", "xpath:idRelative"],
+        ["xpath=(//a[contains(@href, 'https://en.wikipedia.org/wiki/Server_Name_Indication')])[2]", "xpath:href"],
+        ["xpath=//p[11]/a", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "3bb678a3-89ac-44b4-bccd-9ee05e462c8b",
+      "comment": "",
+      "command": "mouseOver",
+      "target": "css=.mw-logo-icon",
+      "targets": [
+        ["css=.mw-logo-icon", "css:finder"],
+        ["xpath=//img", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "b7125263-d191-43b0-9210-f706cd7cfd1e",
+      "comment": "",
+      "command": "mouseOut",
+      "target": "css=.mw-logo-icon",
+      "targets": [
+        ["css=.mw-logo-icon", "css:finder"],
+        ["xpath=//img", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "20e8bca0-f01b-4257-8fe8-deff419b0df3",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=iptables",
+      "targets": [
+        ["linkText=iptables", "linkText"],
+        ["css=p:nth-child(32) > a:nth-child(1)", "css:finder"],
+        ["xpath=//a[contains(text(),'iptables')]", "xpath:link"],
+        ["xpath=//div[@id='main']/p[15]/a", "xpath:idRelative"],
+        ["xpath=//a[@href='http://www.netfilter.org/']", "xpath:href"],
+        ["xpath=//p[15]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'iptables')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "0dbb9185-077f-45d6-b79f-d5a169062d7f",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=↩︎",
+      "targets": [
+        ["linkText=↩︎", "linkText"],
+        ["css=.footnote-backref", "css:finder"],
+        ["xpath=//a[contains(text(),'↩︎')]", "xpath:link"],
+        ["xpath=//li[@id='fn:1']/p/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '#fnref:1')]", "xpath:href"],
+        ["xpath=//li/p/a", "xpath:position"],
+        ["xpath=//a[contains(.,'↩︎')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "dd6da02c-b9b8-45b3-bc04-4339790f0460",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=HTTP RFC",
+      "targets": [
+        ["linkText=HTTP RFC", "linkText"],
+        ["css=p:nth-child(5) > a", "css:finder"],
+        ["xpath=//a[contains(text(),'HTTP RFC')]", "xpath:link"],
+        ["xpath=//div[@id='main']/p[2]/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, 'https://tools.ietf.org/html/rfc7230')]", "xpath:href"],
+        ["xpath=//p[2]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'HTTP RFC')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }]
+  }],
+  "suites": [{
+    "id": "5b7cfe5d-3ffe-4bc5-baf6-e74d318bc948",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["4269100e-c167-437e-bc5c-9828d13b5e25"]
+  }],
+  "urls": ["https://docs.mitmproxy.org/"],
+  "plugins": []
+}

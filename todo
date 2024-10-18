@@ -56,7 +56,6 @@ want to use:
 - rust (tokio) for server
     - tcp/ip
         - server ports for connections
-    - use server for checking stock prices?
     - graphql
     - PSQL, SQLite for docker storage volume or Redis
 - AWS
@@ -84,5 +83,6 @@ DISTRIBUTED READER ONDES
 - Clients will upload an image to a server
 - That server will load balance across a bunch of handler servers
 - these handler servers will write the images to a file, and be multi-threaded
+- also take a look at openvpn spec to see if you can implenet there or the tun/tap article
   
 All these game servers update a sqlite db that stores a bunch of hashes of items and forms an image from it
