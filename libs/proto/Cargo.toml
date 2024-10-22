@@ -15,3 +15,4 @@ parking_lot = "0.12.3"
 refinery = "0.8.14"
 tokio = { version = "1.40.0", features = ["full"] }
 tokio-postgres = "0.7.12"
+tokio-native-tls = "0.3.1"

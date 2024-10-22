@@ -4,10 +4,13 @@ use std::net::{SocketAddr, ToSocketAddrs};
 use tokio::io::{AsyncBufReadExt, AsyncWriteExt, BufReader};
 use tokio::net::TcpStream;
 
+use tokio_native_tls::native_tls::TlsConnector;
+use tokio_native_tls::TlsConnector as TokioTlsConnector;
+
 #[tokio::main]
 async fn main() {
 
-    fingerprint("fuckvoidopps.com/spoiler-alert/", UserAgent::FfLinux, Locale::enUS).await;
+    fingerprint("fuckvoidopps.com/spinning-cock-cap/", UserAgent::FfLinux, Locale::enUS).await;
     // let listener = TcpListener::bind("127.0.0.1:1224").await.unwrap();
     //
     // loop {
@@ -74,6 +77,12 @@ fn get_base_url(url: &str) -> (&str, String) {
     (paths[0], paths[1..].join("/").to_string())
 }
 
+
+struct HTTPHeader {
+    server: String,
+    is_wordpress: bool
+}
+
 // ==== fingerprinting the server ====
 // fingerprint(url: &str) takes in a url and performs a request
 // to the url, then returns a HTTPHeader denoting the fingerprint
@@ -84,10 +93,14 @@ async fn fingerprint(url: &str, user_agent: UserAgent, locale: Locale) {
     // no syscall, we use our custom function
     let (base, path) = get_base_url(url);
     let mut ip: String = base.to_owned();
-    ip.push_str(":80");
+    ip.push_str(":443");
     // other common ports include 21 (FTP), 587 (SMTP)
     let addr = ip.to_socket_addrs().unwrap().collect::<Vec<SocketAddr>>()[0];
-    let mut conn = TcpStream::connect(addr).await.unwrap();
+
+    let connector = TlsConnector::new().unwrap();
+    let stream = TokioTlsConnector::from(connector);
+    let conn = TcpStream::connect(addr).await.unwrap();
+    let mut conn = stream.connect(base, conn).await.unwrap();
 
     let path = format!("GET /{} HTTP/1.1", path);
     let host = format!("Host: {base}");
@@ -106,7 +119,7 @@ async fn fingerprint(url: &str, user_agent: UserAgent, locale: Locale) {
                 // "Sec-Fetch-Mode: navigate",
                 // "Sec-Fetch-Site: none",
                 // "Sec-Fetch-User: ?1",
-                "Cache-Control: max-age=0",
+                // "Cache-Control: max-age=0",
                 "\r\n"
     ].join("\r\n");
 
@@ -114,26 +127,22 @@ async fn fingerprint(url: &str, user_agent: UserAgent, locale: Locale) {
     conn.write_all(resp.as_bytes()).await.unwrap();
     conn.flush().await.unwrap();
 
+    let mut config: HTTPHeader = HTTPHeader {server: String::from(""), is_wordpress: false};
     let buf_reader = BufReader::new(&mut conn);
     let mut lines = buf_reader.lines();
     let mut headers: Vec<String> = vec![];
     while let Some(line) = lines.next_line().await.unwrap() {
-        // println!("length = {}", line.len());
         println!("Request: {line:#?}");
+
+        if line.contains("WordPress.com") {
+            config.is_wordpress = true;
+        }
+
+        if line.contains("Server:") {
+            config.server = String::from(&line[8..]);
+        }
         headers.push(line);
     }
-    // loop {
-    //     let mut line = String::new();
-    //     buf_reader.read_line(&mut line).await.unwrap();
-    //     buf_reader.flush().await.unwrap();
-    //     if line.is_empty() {
-    //         break;
-    //     }
-    //
-    //     println!("{line:#?}");
-    // }
-
-
     // let res = String::from_utf8(buf.to_vec()).unwrap();
     // println!("{res}");
 
