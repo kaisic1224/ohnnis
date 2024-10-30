@@ -1,16 +1,17 @@
-use core::fmt;
+mod request;
+
+use request::schema::{HTTPHeader, UserAgent, Locale};
+use request::utility::get_base_url;
+
 use std::net::{SocketAddr, ToSocketAddrs};
-
-use tokio::io::{AsyncBufReadExt, AsyncWriteExt, BufReader};
-use tokio::net::TcpStream;
-
+use tokio::{io::{AsyncWriteExt, AsyncBufReadExt, BufReader}, net::TcpStream};
 use tokio_native_tls::native_tls::TlsConnector;
 use tokio_native_tls::TlsConnector as TokioTlsConnector;
 
 #[tokio::main]
 async fn main() {
 
-    fingerprint("fuckvoidopps.com/spinning-cock-cap/", UserAgent::FfLinux, Locale::enUS).await;
+    let header = fingerprint("fuckvoidopps.com/spinning-cock-cap/", UserAgent::FfLinux, Locale::EnUs).await;
     // let listener = TcpListener::bind("127.0.0.1:1224").await.unwrap();
     //
     // loop {
@@ -24,89 +25,35 @@ async fn main() {
 
 
 
-
-enum UserAgent {
-    FfMacOs,
-    ChromeMacOs,
-    ChromeWin10,
-    FfLinux
-}
-
-impl UserAgent {
-    fn value(&self) -> &str {
-        match *self {
-            UserAgent::FfMacOs => "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:99.0) Gecko/20100101 Firefox/99.0",
-            UserAgent::ChromeMacOs => "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36",
-            UserAgent::ChromeWin10 => "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36",
-            UserAgent::FfLinux => "Mozilla/5.0 (X11; Linux x86_64; rv:131.0) Gecko/20100101 Firefox/131.0"
-        }
-    }
-}
-
-impl fmt::Display for UserAgent {
-    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
-        write!(f, "{}", self.value())
-    }
-}
-
-enum Locale {
-    enUS,
-    koKR
-}
-
-impl Locale {
-    fn value(&self) -> &str {
-        match *self {
-            Locale::enUS => "en-US",
-            Locale::koKR => "ko-KR"
-        }
-    }
-}
-
-impl fmt::Display for Locale {
-    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
-        write!(f, "{}", self.value())
-    }
-}
-
-fn get_base_url(url: &str) -> (&str, String) {
-    let paths = url.split("/").collect::<Vec<&str>>();
-
-    // remove any "https:// or http:// from beginning"
-
-    (paths[0], paths[1..].join("/").to_string())
-}
-
-
-struct HTTPHeader {
-    server: String,
-    is_wordpress: bool
-}
-
 // ==== fingerprinting the server ====
 // fingerprint(url: &str) takes in a url and performs a request
 // to the url, then returns a HTTPHeader denoting the fingerprint
 // of the server.
 // assumes: url is in a format with only the TLD and SLD
-async fn fingerprint(url: &str, user_agent: UserAgent, locale: Locale) {
+async fn fingerprint(url: &str, user_agent: UserAgent, locale: Locale) -> HTTPHeader {
     // first step, change the url from human-readable into its ip using dns-lookup
     // no syscall, we use our custom function
-    let (base, path) = get_base_url(url);
+    let (ssl, base, path) = get_base_url(url);
+
+    let mut config: HTTPHeader = HTTPHeader::new("yikesdawgie", Some(ssl));
+
     let mut ip: String = base.to_owned();
-    ip.push_str(":443");
-    // other common ports include 21 (FTP), 587 (SMTP)
+    // ip.push_str(":443");
+    ip.push_str(":80");
+    // other common ports include 21 (FTP), 587 (SMTP), 80 (http)
     let addr = ip.to_socket_addrs().unwrap().collect::<Vec<SocketAddr>>()[0];
+    // attempt to use port 80 first
 
     let connector = TlsConnector::new().unwrap();
     let stream = TokioTlsConnector::from(connector);
     let conn = TcpStream::connect(addr).await.unwrap();
     let mut conn = stream.connect(base, conn).await.unwrap();
 
-    let path = format!("GET /{} HTTP/1.1", path);
+    let path = format!("GET /{} HTTP/{}", path, config.version.value());
     let host = format!("Host: {base}");
     let ua = format!("User-Agent: {}", user_agent.value());
     let lang = format!("Accept-Language: {},{};q=0.5", locale.value(), locale.value().split("-").collect::<Vec<&str>>()[0]);
-    let resp = [path.as_str(),
+    let req = [path.as_str(),
                 host.as_str(),
                 ua.as_str(),
                 "Accept: text/html, application/xhtml_xml, application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8",
@@ -123,40 +70,27 @@ async fn fingerprint(url: &str, user_agent: UserAgent, locale: Locale) {
                 "\r\n"
     ].join("\r\n");
 
-    println!("{resp}");
-    conn.write_all(resp.as_bytes()).await.unwrap();
+    conn.write_all(req.as_bytes()).await.unwrap();
     conn.flush().await.unwrap();
 
-    let mut config: HTTPHeader = HTTPHeader {server: String::from(""), is_wordpress: false};
     let buf_reader = BufReader::new(&mut conn);
     let mut lines = buf_reader.lines();
     let mut headers: Vec<String> = vec![];
     while let Some(line) = lines.next_line().await.unwrap() {
         println!("Request: {line:#?}");
 
-        if line.contains("WordPress.com") {
-            config.is_wordpress = true;
-        }
+        // if line.contains("WordPress.com") {
+        //     config.is_wordpress = true;
+        // }
 
         if line.contains("Server:") {
             config.server = String::from(&line[8..]);
         }
         headers.push(line);
     }
-    // let res = String::from_utf8(buf.to_vec()).unwrap();
-    // println!("{res}");
 
     conn.shutdown().await.unwrap();
-    // let (stream, _) = listener.accept().await.unwrap();
-    //
-    // let buf_reader = BufReader::new(stream.into_std().unwrap());
-    // let req: Vec<_> = buf_reader
-    //     .lines()
-    //     .map(|result| result.unwrap())
-    //     .take_while(|line| !line.is_empty())
-    //     .collect();
-    //
-    // println!("{req:#?}")
+    config
 }
 
 

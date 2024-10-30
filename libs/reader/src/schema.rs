@@ -1,5 +1,4 @@
-use std::{fs::File, io::{BufRead, BufReader}};
-
+use std::{fs::File, io::{BufRead, BufReader}, path::Path};
 enum Keywords {
     // Keywords
     Function, IF, Else, Return, While,
@@ -26,36 +25,35 @@ enum Keywords {
 }
 
 
-struct Lexer {
-    
+pub struct Lexer {
+    // itr fields
+    reader: BufReader<String, File>,
+
+    // produces
+    tokens: Vec<Keywords>,
 }
 
 
-trait Tokenizer {
-    fn tokenize(&self, path_to_file: &str);
+pub trait Tokenizer {
+    fn new(src: &Path) -> Self;
 
-    fn do_thing2(&self);
+    fn tokenize(&self);
 }
 
 
 impl Tokenizer for Lexer {
-    fn tokenize(&self, path_to_file: &str) {
-        let f = File::open(path_to_file).expect("The file provided in the path does not exist");
+    fn new(src: &Path) -> Lexer {
+        let f = File::open(src).expect("The file provided in the path does not exist");
+        let buf_reader = BufReader::new(f);
 
-        let mut reader = BufReader::new(f);
+        Lexer{reader: buf_reader, tokens: vec![]}
+    }
 
-        let tokens: Vec<Keywords> = vec![];
+    fn tokenize(&self) {
         let mut line = String::new();
-
         loop {
             // read_line returns the number of bytes read from start until NL character is reached
-            let len = reader.read_line(&mut line);
+            let len = self.reader.read_line(&mut line);
         }
     }
-
-    fn do_thing2(&self) {
-        todo!();
-    }
 }
-
-
